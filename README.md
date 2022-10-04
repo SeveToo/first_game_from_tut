@@ -1,24 +1,24 @@
 <div align="center" id="top"> 
 <h1 align="center">First game in python</h1>
 <h3>With tutorial from YouTube</h3>
-  <a target="_blank" href="https://sevetoo.github.io/obliczanie-r-wnania-kwadratowego/">
+  <!-- <a target="_blank" href="https://sevetoo.github.io/first_game_from_tut/"> -->
   <img src="./preview.png" alt="Tabliczka Mnożenia Do Nauki" />
-  </a>
+  <!-- </a> -->
 
 &#xa0;
 
-<!-- <a target="_blank" href="https://sevetoo.github.io/obliczanie-r-wnania-kwadratowego/">Demo</a> -->
+<!-- <a target="_blank" href="https://sevetoo.github.io/first_game_from_tut/">Demo</a> -->
 
 </div>
 
 <!-- <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/SeveToo/multiplication-for-learning?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/SeveToo/first_game_from_tut?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/SeveToo/multiplication-for-learning?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/SeveToo/first_game_from_tut?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/SeveToo/multiplication-for-learning?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/SeveToo/first_game_from_tut?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/SeveToo/multiplication-for-learning?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/SeveToo/first_game_from_tut?color=56BEB8">
 </p> -->
 
 <!-- <p align="center">
@@ -50,7 +50,7 @@ The following tools were used in this project:
 <!-- ## :white_check_mark: Requirements
 
 You just need a browser.
-https://sevetoo.github.io/obliczanie-r-wnania-kwadratowego/ -->
+https://sevetoo.github.io/first_game_from_tut/ -->
 
 <!-- ## :checkered_flag: Starting
 
