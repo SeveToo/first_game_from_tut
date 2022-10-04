@@ -1,0 +1,10 @@
+True i False z wielkiej litery
+
+Stosowanie nieskończonej pentli ze zmienną=True aby podtrzymać program zamiast jakiegoś (brake)
+
+typy danych w Pythonie:
+int, float, string, bool, list, tuple, set, dict
+
+snake_case do nazywania plików
+
+pygame.draw.rect(screen, (R, G, B), (x, y, width, height))
