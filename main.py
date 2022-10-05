@@ -5,21 +5,29 @@ pygame.init()
 window = pygame.display.set_mode((1280, 720))
 
 # variables
-image = pygame.image.load("bg.jpg") # load image to variable
+speed = 2;
 
 class Player:
     def __init__(self):
-        self.x_card = 0  
-        self.y_card = 0 
+        self.x_cord = 0  
+        self.y_cord = 0 
         self.width = 0 
         self.height = 0 
-        self.image = pygame.image.load("player.png")
+        self.image = pygame.image.load("manstand.png")
     
-    def tick(self): 
-        pass
+    def tick(self, keys): 
+        if keys[pygame.K_w]:
+            self.y_cord -= speed;
+        if keys[pygame.K_s]:
+            self.y_cord += speed;
+        if keys[pygame.K_a]:
+            self.x_cord -= speed;
+        if keys[pygame.K_d]:
+            self.x_cord += speed;
+
 
     def draw(self):
-        window.blit(self.image, (self.x_card, self.y_card))
+        window.blit(self.image, (self.x_cord, self.y_cord))
 
 def main():
     # we make inifnite loop to prevent autoclose our app
@@ -33,14 +41,11 @@ def main():
             # if player close the window
             if event.type == pygame.QUIT: 
                 run = False
-        
-        player.tick()
+        keys = pygame.key.get_pressed()
+        player.tick(keys)
 
         # change background
-        window.fill((38, 35, 53))
-
-        # place the image on screen 
-        window.blit(image, (0,0))
+        window.fill((247, 248, 249))
 
         # place the player on the screen
         player.draw()
