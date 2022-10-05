@@ -8,3 +8,5 @@ int, float, string, bool, list, tuple, set, dict
 snake_case do nazywania plików
 
 pygame.draw.rect(screen, (R, G, B), (x, y, width, height))
+
+window.blit(var_with_image, (x,y))

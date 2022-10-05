@@ -1,39 +1,54 @@
 # first pip install pygame
 import pygame
-# variables
-x = 30
-y = 50
-player = pygame.rect.Rect(x,y,100,100) # make rect
-player_speed = 2
 
 pygame.init()
-window = pygame.display.set_mode((800, 600))
+window = pygame.display.set_mode((1280, 720))
 
-# we make inifnite loop to prevent autoclose our app
-run = True
-while run:
-    # make a limit speed of the loop
-    pygame.time.Clock().tick(60) #set game to 60 FPS
-    #get events from player
-    for event in pygame.event.get():
-        # if player close the window
-        if event.type == pygame.QUIT: 
-            run = False
+# variables
+image = pygame.image.load("bg.jpg") # load image to variable
+
+class Player:
+    def __init__(self):
+        self.x_card = 0  
+        self.y_card = 0 
+        self.width = 0 
+        self.height = 0 
+        self.image = pygame.image.load("player.png")
     
-    keys = pygame.key.get_pressed()
-    # moving ractangle when the button is pressed
-    if keys[pygame.K_RIGHT]:
-        x += player_speed
-    if keys[pygame.K_LEFT]:
-        x -= player_speed    
-    if keys[pygame.K_UP]:
-        y -= player_speed
-    if keys[pygame.K_DOWN]:
-        y += player_speed
-    player = pygame.rect.Rect(x,y,100,100) # make rect
+    def tick(self): 
+        pass
 
-    # change background
-    window.fill((38, 35, 53))
-    #drow rect on screen
-    pygame.draw.rect(window, (66, 165, 245), player)
-    pygame.display.update()
+    def draw(self):
+        window.blit(self.image, (self.x_card, self.y_card))
+
+def main():
+    # we make inifnite loop to prevent autoclose our app
+    run = True
+    player = Player()
+    while run:
+        # make a limit speed of the loop
+        pygame.time.Clock().tick(60) #set game to 60 FPS
+        #get events from player
+        for event in pygame.event.get():
+            # if player close the window
+            if event.type == pygame.QUIT: 
+                run = False
+        
+        player.tick()
+
+        # change background
+        window.fill((38, 35, 53))
+
+        # place the image on screen 
+        window.blit(image, (0,0))
+
+        # place the player on the screen
+        player.draw()
+
+        pygame.display.update()
+
+        keys = pygame.key.get_pressed()
+   
+
+if __name__ == "__main__":
+    main()
