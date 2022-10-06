@@ -58,8 +58,12 @@ class Player:
             self.x_cord = 0
 
 
-    def draw(self):
-        self.blockedBorders()
+    def draw(self, is_open):
+        if is_open:
+            self.teleportBorders()
+        else:
+            self.blockedBorders()
+
         window.blit(self.image, (self.x_cord, self.y_cord))
 
 class Cash:
@@ -94,17 +98,18 @@ class Key:
 
 def main():
     # main variables
+    is_open = False
     run = True
     player = Player()
     clock = 0
+    clock2 = 0
+    clock3 = 15;
     score = 0
     banknotes = []
     special_keys = []
     colors = [(230,230,230), (95, 157, 247), (255, 247, 233), (255, 115, 29), (255, 202, 202)]
     color_nr = 0
     text_image = pygame.font.Font.render(pygame.font.SysFont("Poppins",48), f"Twój wynik: {score}", True, (0,0,0))
-
-    # background = pygame.image.load("bg.png")
 
     while run:
         clock += pygame.time.Clock().tick(60) / 1000
@@ -116,9 +121,17 @@ def main():
                 run = False
         keys = pygame.key.get_pressed()
         if(clock >= coin_resp_time):
+            clock2 += 1
+            clock3 -= 1
             clock = 0
             banknotes.append(Cash())
+
+        if(clock2 >= randint(20,30)):
             special_keys.append(Key())
+            clock2 = 0
+
+        if(clock3 <= 0):
+            is_open = False
 
         player.tick(keys)
         for banknote in banknotes:
@@ -138,8 +151,12 @@ def main():
                 # print(score)
 
         for special_key in special_keys:
+            # if player get a key
             if player.hitbox.colliderect(special_key.hitbox):
                 special_keys.remove(special_key)
+                is_open = True
+                clock3 = 15
+
 
         # change background
         window.fill(colors[color_nr])
@@ -150,7 +167,7 @@ def main():
             banknote.draw()
         for special_key in special_keys:
             special_key.draw()
-        player.draw()
+        player.draw(is_open)
         pygame.display.update()
 
         keys = pygame.key.get_pressed()
