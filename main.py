@@ -1,5 +1,6 @@
 # first pip install pygame
 import pygame
+from random import randint 
 
 pygame.init()
 window = pygame.display.set_mode((1280, 720))
@@ -30,8 +31,8 @@ class Player:
 
 class Cash:
     def __init__(self):
-        self.x_cord = 0
-        self.y_cord = 0
+        self.x_cord = randint(0, 1280)
+        self.y_cord = randint(0,720)
         self.image = pygame.image.load("coin.png")
 
     def tick(self):
