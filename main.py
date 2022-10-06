@@ -31,9 +31,11 @@ class Player:
 
 class Cash:
     def __init__(self):
-        self.x_cord = randint(0, 1280)
-        self.y_cord = randint(0,720)
         self.image = pygame.image.load("coin.png")
+        self.width = self.image.get_width()
+        self.height = self.image.get_height()
+        self.x_cord = randint(self.width, 1280-self.width)
+        self.y_cord = randint(self.height,720-self.height)
 
     def tick(self):
         pass
