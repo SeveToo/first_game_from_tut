@@ -96,6 +96,22 @@ class Key:
     def draw(self):
         window.blit(self.image, (self.x_cord, self.y_cord))
 
+
+class Bug:
+    def __init__(self):
+        self.image = pygame.image.load("bug.png")
+        self.width = self.image.get_width()
+        self.height = self.image.get_height()
+        self.x_cord = randint(self.width, 1280-2*self.width)
+        self.y_cord = randint(self.height,720-2*self.height)
+        self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
+
+    def tick(self):
+        self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
+
+    def draw(self):
+        window.blit(self.image, (self.x_cord, self.y_cord))
+
 def main():
     # main variables
     is_open = False
@@ -105,15 +121,17 @@ def main():
     clock2 = 0
     clock3 = 15;
     score = 0
+    life = 5
+    life_image = pygame.image.load("heart.png")
     banknotes = []
     special_keys = []
+    bugs = []
     colors = [(230,230,230), (95, 157, 247), (255, 247, 233), (255, 115, 29), (255, 202, 202)]
     color_nr = 0
     text_image = pygame.font.Font.render(pygame.font.SysFont("Poppins",48), f"Twój wynik: {score}", True, (0,0,0))
 
     while run:
         clock += pygame.time.Clock().tick(60) / 1000
-        
         #get events from player
         for event in pygame.event.get():
             # if player close the window
@@ -124,10 +142,13 @@ def main():
             clock2 += 1
             clock3 -= 1
             clock = 0
+            bugs.append(Bug())
+
             banknotes.append(Cash())
 
         if(clock2 >= randint(20,30)):
             special_keys.append(Key())
+            bugs.append(Bug())
             clock2 = 0
 
         if(clock3 <= 0):
@@ -139,6 +160,9 @@ def main():
 
         for special_key in special_keys:
             special_key.tick()
+        
+        for bug in bugs:
+            bug.tick()
         
         for banknote in banknotes:
             if player.hitbox.colliderect(banknote.hitbox):
@@ -157,6 +181,12 @@ def main():
                 is_open = True
                 clock3 = 15
 
+        for bug in bugs:
+            # if player get a key
+            if player.hitbox.colliderect(bug.hitbox):
+                bugs.remove(bug)
+                life-=1
+
 
         # change background
         window.fill(colors[color_nr])
@@ -167,9 +197,17 @@ def main():
             banknote.draw()
         for special_key in special_keys:
             special_key.draw()
+        for bug in bugs:
+            bug.draw()
         player.draw(is_open)
+
+         # draw lives
+        for i in range(1,life+1):
+            window.blit(life_image, [i*(life_image.get_width()+5), window_height-50])
+
         pygame.display.update()
 
+    if life > 0:
         keys = pygame.key.get_pressed()
     print("Twój wynik to: "+ str(score))
 
