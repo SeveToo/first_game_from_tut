@@ -1,4 +1,6 @@
-# first pip install pygame
+# in console write:
+# pip install pygame 
+# in folders lvl1 and lvl2
 import pygame
 from random import randint 
 
