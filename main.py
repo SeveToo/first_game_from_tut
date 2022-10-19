@@ -142,7 +142,7 @@ def main():
             clock2 += 1
             clock3 -= 1
             clock = 0
-            bugs.append(Bug())
+            # bugs.append(Bug())
 
             banknotes.append(Cash())
 
